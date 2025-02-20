@@ -134,8 +134,7 @@ class Car(models.Model):
     registration_number = models.CharField( max_length=30, blank=True, null = True )
     car_description = models.TextField(blank=True, null = True )
     car_post_date = models.DateField(default=datetime.now)
-    car_photo = models.ImageField(upload_to='car/car_images/', blank=True, null = True )
-    # car_other_photos = models.ImageField(upload_to='cars')
+    car_photo = models.ImageField(upload_to='car/car_images/', blank=True, null=True)    # car_other_photos = models.ImageField(upload_to='cars')
     car_status = models.CharField(max_length=25, choices=car_status_options, default= 'active')
     vehicle_type = models.CharField(max_length=25, choices=vehicle_type_choices, default= 'Car')
 
@@ -206,3 +205,13 @@ class Client(models.Model):
     
     class Meta:
         verbose_name_plural = "Client Phone Number"
+def __str__(self):
+        return self.car_title
+
+
+class CarPhoto(models.Model):
+    car = models.ForeignKey(Car, related_name='photos', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='car/car_images/')
+
+    def __str__(self):
+        return f"Photo for {self.car.car_title}"

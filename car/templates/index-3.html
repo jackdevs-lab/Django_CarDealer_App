@@ -113,7 +113,7 @@
 
 
         <div class="form-group col-md-12">
-          <label class="form-label">Price Range (₹)</label>
+          <label class="form-label">Price Range (Ksh)</label>
                   <input id="price_range" name= "slider" data-slider-id='ex1Slider' type="text" class="span2" value="" data-slider-min="0" data-slider-max="2000000" data-slider-step="100000" data-slider-value="[100000,1200000]" tooltip="always"/>
                   <p>Range: <span id="message"></span></p>
         </div>
@@ -145,7 +145,7 @@
 <section id="how-work" class="section-padding">
 	<div class="container">
 		<div class="section-header heading-3 text-center">
-			<h2>How it Work</h2>
+			<h2>How it Works</h2>
 			<p>Helps you to find perfect car.</p>
 		</div>
 		<div class="row">
@@ -200,7 +200,7 @@
 				</div>
 			</div>
 			<div class="col-md-6">
-				<h2>Why choose Biharimotors.com?</h2>
+				<h2>Why choose Carlucy.com?</h2>
 				<p>How to get vehicle and owner details?</p>
 				
 				<ul>
@@ -219,38 +219,41 @@
 
 <!-- Featured-LIsting -->
 <section id="featured-listings" class="section-padding">
-	<div class="container">
-		<div class="section-header heading-3 text-center">
-			<h2>Our Vehicles Listing</h2>
-			<p>List of some used vehicle</p>
-		</div>	
-		<div class="row">
-		    {% for car in allcars%}
-        	{% if forloop.counter < 7 %}
-			<div class="col-md-4 col-sm-6">
-				<div class="featured-listing-wrap">
-					<div class="listing-image">
-						<a href="/listing-detail.html/{{car.id}}/"><img src="{{car.car_photo.url}}" alt="image"></a>
-						
-						
-					</div>
-					<h4><a href="/listing-detail.html/{{car.id}}/">{{car.car_title|title}}</a></h4>
-					<p class="listing-price">{{car.car_title|title}}</p>
-					<div class="listing-meta">
-						<ul>
-							<li>{{car.fuel_type|title}}</li>					
-							<li>{{car.transmission_type|title}}</li>
-							<li>{{car.car_city |title}}</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			{% endif %}
-        	{% endfor %}
-			
-		</div>
-	</div>
+    <div class="container">
+        <div class="section-header heading-3 text-center">
+            <h2>Our Vehicles Listing</h2>
+            <p>List of some used vehicle</p>
+        </div>  
+        <div class="row">
+            {% for car in allcars %}
+                {% if forloop.counter < 7 %}
+                    <div class="col-md-4 col-sm-6">
+                        <div class="featured-listing-wrap">
+                            <div class="listing-image">
+                                <a href="/listing-detail.html/{{ car.id }}/">
+                                    {% for image in car.images.all|slice:":1" %}
+    <img src="{{ image.image.url }}" alt="Car Image">
+{% endfor %}
+
+                                </a>
+                            </div>
+                            <h4><a href="/listing-detail.html/{{ car.id }}/">{{ car.car_title|title }}</a></h4>
+                            <p class="listing-price">{{ car.car_title|title }}</p>
+                            <div class="listing-meta">
+                                <ul>
+                                    <li>{{ car.fuel_type|title }}</li>                    
+                                    <li>{{ car.transmission_type|title }}</li>
+                                    <li>{{ car.car_city|title }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
 </section>
+
 <!-- /Featured-LIsting -->
 
 <section class="section-padding">
