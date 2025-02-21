@@ -122,7 +122,7 @@
               </div>
 
               <div class="form-group">
-                  <label class="form-label">Price Range (₹)</label>
+                  <label class="form-label">Price Range (Ksh)</label>
                   <input id="price_range1" name= "slider" data-slider-id='ex1Slider' type="text" class="span2" value="" data-slider-min="0" data-slider-max="2000000" data-slider-step="100000" data-slider-value="[100000,1200000]" tooltip="always"/>
                   
               </div>
@@ -171,7 +171,7 @@
           </div>
           <div class="product-listing-content">
             <h5><a href="/listing-detail.html/{{car.id}}">{{car.car_title|title}}</a></h5>
-            <p class="list-price">₹ {{car.expected_selling_price | intcomma }}</p>
+            <p class="list-price">Ksh {{car.expected_selling_price | intcomma }}</p>
             <ul>
               <li><i class="fa fa-road" aria-hidden="true"></i>{{car.kilometer_driven  | intcomma }} km</li>
               <li><i class="fa fa-paint-brush" aria-hidden="true"></i>{{car.car_color|title}}</li>
@@ -297,7 +297,7 @@
 
               
               <div class="form-group">
-                  <label class="form-label">Price Range (₹)</label>
+                  <label class="form-label">Price Range (Ksh)</label>
                   <input id="price_range" name= "slider" data-slider-id='ex1Slider' type="text" class="span2" value="" data-slider-min="0" data-slider-max="2000000" data-slider-step="100000" data-slider-value="[100000,1200000]" tooltip="always"/>
                   <p>Range: <span id="message"></span></p>
                   
@@ -330,7 +330,7 @@
               <li class="gray-bg">
                 <div class="recent_post_img"> <a href="/listing-detail.html/{{car.id}}"><img src="{{car.car_photo.url}}" alt="image"></a> </div>
                 <div class="recent_post_title"> <a href="/listing-detail.html/{{car.id}}">{{car.car_title|title}}</a>
-                  <p class="widget_price">₹ {{car.expected_selling_price | intcomma }}</p>
+                  <p class="widget_price">Ksh {{car.expected_selling_price | intcomma }}</p>
                 </div>
                 
               </li>
@@ -361,7 +361,7 @@ function submitform()
 <script>
 $( document ).ready(function() {
     $('#price_range').change(function(){
-        $('#message').html('₹ '+$('#price_range').val());
+        $('#message').html('Ksh '+$('#price_range').val());
     });
 });
 </script>
